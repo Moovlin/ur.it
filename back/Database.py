@@ -1,17 +1,23 @@
 '''
     Simple socket server using threads
 '''
-
+from flask import Flask
 import socket
 import sys
 import threading
-import demjson
 import io
 
-def player():
 
 
 
+app = Flask(__name__)
+
+@app.route("/add")
+def playerAdd():
+	
+@app.route("/it")
+def whosIt():
+	return 
 
 HOST = ''   # Symbolic name, meaning all available interfaces
 PORT = 8888 # Arbitrary non-privileged port
