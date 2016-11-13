@@ -1,4 +1,5 @@
 """
+date: 11-12-2016
 author: Richard Joerger & Hank Sheehan
 """
 
@@ -10,7 +11,6 @@ from flask import request, jsonify
 import json
 import ast
 import urllib2#for GET requests
-
 
 global playerList
 playerList = []
@@ -39,14 +39,15 @@ class Player:
 	def isBroken(self, broke):
 		self.broken = broke
 		
-	
-	
-def dataToJSON(lat,lng,name,it):
-	return name+";"+str(lat)+";"+str(lng)+";"+str(it).lower()
+
+
 
 app = Flask(__name__)
 
 
+"""
+adds a player and returns a json with the 5 fields (name, it, broken, lat, lng)
+"""
 #name=<>&lat=<>&lng=<>
 @app.route("/add")
 def playerAdd():
@@ -80,6 +81,10 @@ def playerAdd():
 	return jsonify(name=play.name, it=play.it, broken=play.broken, lat=play.loc.lat, lng=play.loc.lng)	
 	#return "{response:\"Welcome"+name+"!\"}" 
 
+
+"""
+returns a location object if the lat and lng are in range
+"""
 def addLocation(name, lat, lng):
 	loc = None
 	if (lat >= -90 and lat <= 90) and (lng >= -180 and lng <= 180):
@@ -89,16 +94,22 @@ def addLocation(name, lat, lng):
 		global locDict
 	return loc
 
+"""
+returns a string of all players
+"""
 #allUsers
 @app.route("/allUsers")
 def allUsers():
 	playerString = ''
 	for key, value in locDict.items():
-		playerString += dataToJSON(lat=value.loc.lat, lng=value.loc.lng, name=value.name, it=value.it) + ','
+		playerString += value.name+";"+str(value.loc.lat)+";"+str(value.loc.lng)+";"+str(value.it).lower() + ','
 	playerString = playerString[:len(playerString)-1]
 	
 	return playerString
 
+"""
+Updates the locations of all the players and returns the json
+"""
 #name=<>&lat=<>&lng=<>
 @app.route("/update")
 def update():
@@ -121,6 +132,9 @@ def update():
 	else:
 		return jsonify(broken=True)
 
+"""
+Switches with the players who are 'it'
+"""
 @app.route("/tag")
 def tag():
 	tagger = request.args.get('tagger')
@@ -137,8 +151,11 @@ def tag():
 		else :
 			return jsonify(it="No.")
 	return jsonify(it="No.")
-		
 
+
+"""
+Removes a user by returning a json file
+"""
 @app.route("/remove")
 def remove():
 	name = request.args.get('name')
@@ -151,6 +168,9 @@ def remove():
 			return jsonify(name="No.")
 
 
+"""
+creates and returns a json file with an array of restaurants
+"""
 @app.route("/restaurants")
 def restaurants():
 	lat = request.args.get('lat')
@@ -182,43 +202,3 @@ def restaurants():
 
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=5002)
-
-
-"""""""""""""""""
-{
-	players = 
-		{
-			player_1 =
-				{
-
-
-				}		
-
-		}
-
-
-}
-"""""""""""""""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
