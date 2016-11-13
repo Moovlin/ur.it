@@ -1,6 +1,9 @@
+"""
+author: Hank Sheehan
+"""
 from flask import Flask
 from flask import request, jsonify
-
+import json
 
 
 global playerList
@@ -9,7 +12,6 @@ global it
 it = ''
 global locDict
 locDict = {}
-
 
 class LatLng:
 	def setLat(self, lat):
@@ -34,10 +36,12 @@ class Player:
 	
 	
 def dataToJSON(lat,lon,name,it,broken):
-	return "{ \"latitude: \""+str(lat)+",\n\"longitude:\" "+str(lon)+",\n\"name:\" \""+name+"\",\n\"broken: \""+str(broken)+"}"
+	return "{ \n\"latitude\": "+str(lat)+",\n\"longitude\": "+str(lon)+",\n\"name\": \""+name+"\",\n\"broken\": "+str(broken).lower()+",\n\"it\": "+str(it).lower()+"}"
 
 app = Flask(__name__)
 
+
+#name=<>&lat=<>&lng=<>
 @app.route("/add")
 def playerAdd():
 	name = request.args.get('name')
@@ -55,14 +59,15 @@ def playerAdd():
 		lat = request.args.get('lat')
 		lng = request.args.get('lng')
 		if lat != None and lng != None:
-			lat = float(str(lat)) * (10**6)
-			lng = float(str(lng)) * (10**6)
+			lat = float(str(lat))
+			lng = float(str(lng))
 			tempLoc = addLocation(name, lat, lng)
 			if tempLoc == None:
 				play.isBroken(True)
 			else:
 				play.setLatLng(tempLoc)
 			locDict[name]= play
+			playerList.append(play)
 		else :
 			play.isBroken(True)
 
@@ -71,22 +76,44 @@ def playerAdd():
 
 def addLocation(name, lat, lng):
 	loc = None
-	if (lat >= -90000000 and lat <= 90000000) and (lng >= -180000000 and lng <= 180000000):
+	if (lat >= -90 and lat <= 90) and (lng >= -180 and lng <= 180):
 		loc = LatLng()
-		loc.setLat(lat/(10**6))
-		loc.setLng(lng/(10**6))
+		loc.setLat(lat)
+		loc.setLng(lng)
 		global locDict
 	return loc
 
+#allUsers
 @app.route("/allUsers")
 def allUsers():
-	output = ""
+	output = '{\"users\": ['
 	for key, value in locDict.items():
-		output += dataToJSON(lat=value.loc.lat, lon=value.loc.lng, name=value.name, it=value.it, broken=value.broken)
-	return output
+		output += dataToJSON(lat=value.loc.lat, lon=value.loc.lng, name=value.name, it=value.it, broken=value.broken) + ','
+	output = output[:len(output)-1]
+	output +='\n]}'
+	return jsonify(stringout=output)
 
-#@app.route("/update")
-#def update():
+#name=<>&lat=<>&lng=<>
+@app.route("/update")
+def update():
+	name = request.args.get('name')
+	if name != None:
+		play = locDict[name]
+		lat = request.args.get('lat')
+		lng = request.args.get('lng')
+		lat = float(str(lat))
+		lng = float(str(lng))
+		tempLoc = addLocation(play.name, lat, lng)
+		if tempLoc != None:
+		#	tempLoc.setLat(lat/(10**6))
+		#	tempLoc.setLng(lng/(10**6))
+			play.loc = tempLoc
+			return jsonify(broken=False, lat=lat, lng=lng)
+		else:
+			return jsonify(broken=True)
+
+	else:
+		return jsonify(broken=True)
 
 @app.route("/tag")
 def tag():
@@ -116,7 +143,6 @@ def remove():
 			return jsonify(name=name)
 		else :
 			return jsonify(name="No.")
-
 
 
 if __name__ == '__main__':
