@@ -8,7 +8,8 @@ IMportin' stuff
 from flask import Flask
 from flask import request, jsonify
 import json
-
+import ast
+import urllib2#for GET requests
 
 
 global playerList
@@ -150,8 +151,37 @@ def remove():
 			return jsonify(name="No.")
 
 
+@app.route("/restaurants")
+def restaurants():
+	lat = request.args.get('lat')
+	lng = request.args.get('lng')
+	if lat != None and lng != None:
+		lat = float(str(lat))
+		lng = float(str(lng))
+		locurl = "http://api.tripadvisor.com/api/partner/2.0/map/"+str(lat)+","+str(lng)+"/restaurants?key=caef92fb-2d4c-4341-bdff-c102b7a7f0da"
+		print(locurl)
+		content = urllib2.urlopen(locurl).read()
+		newStr = json.loads(content)["data"]
+		print(len(newStr))
+		retStr = "{\"places\":["
+		for x in range(0,len(newStr)):
+			print(newStr[x]["distance"])
+			retStr += "{"
+			retStr += "\"address\": \""
+			retStr += newStr[x]["address_obj"]["street1"]
+			retStr += "\",\n"
+			retStr += "\"distance\": "
+			retStr += "\""+newStr[x]["distance"]
+			retStr += "\"\n"
+			retStr += "},\n"
+		retStr = retStr[:len(retStr)-2]
+		retStr += "]}"
+		return jsonify(ast.literal_eval(retStr))
+	else :
+		return jsonify(name="No.")
+
 if __name__ == '__main__':
-	app.run(host="0.0.0.0")
+	app.run(host="0.0.0.0", port=5002)
 
 
 """""""""""""""""
