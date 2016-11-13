@@ -178,7 +178,7 @@ def restaurants():
 	if (lat != None and lng != None):
 		lat = float(str(lat))
 		lng = float(str(lng))
-		manager = PoolManager()
+		manager = urllib3.PoolManager()
 		locurl = "http://api.tripadvisor.com/api/partner/2.0/map/"+str(lat)+","+str(lng)+"/restaurants?key=caef92fb-2d4c-4341-bdff-c102b7a7f0da"
 		print(locurl)
 		content = manager.urlopen(locurl).read()
