@@ -8,7 +8,9 @@
 
 import UIKit
 
+import AlamofireObjectMapper
 import ObjectMapper
+
 
 class Player : Mappable {
     var name: String!

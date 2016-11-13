@@ -38,6 +38,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         }
     }
     
+    func update() {
+        updateLocaiton((map.myLocation?.coordinate)!) { result in
+            self.people = result
+            self.checkIt()
+            self.setupMarkers(for: result)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +58,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             self.people = result
             self.checkIt()
             self.setupMarkers(for: result)
+            
+            var updateTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+            
         }
         
         
@@ -150,6 +161,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             }
         }
     }
+    
+    ///PRAGMA: Restaurant button
+    /*@IBAction func openRestaurants(_ sender:Any){
+        var popup:RestaurantView = RestaurantView()
+        self.present(popup, animated: true, completion: nil)
+    }*/
 }
 
 

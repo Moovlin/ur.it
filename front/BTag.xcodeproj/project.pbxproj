@@ -10,6 +10,7 @@
 		0468B6D91DD7D24100340345 /* Var.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6D81DD7D24100340345 /* Var.swift */; };
 		0468B6DB1DD7D32F00340345 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6DA1DD7D32F00340345 /* MapViewController.swift */; };
 		0468B6DD1DD7D49100340345 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6DC1DD7D49100340345 /* Player.swift */; };
+		0488809A1DD8D006001516C1 /* Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048880991DD8D006001516C1 /* Restaurants.swift */; };
 		04ACDCD51DD8B08700593422 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ACDCD41DD8B08700593422 /* CoreLocation.framework */; };
 		04ACDCD71DD8B0B800593422 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ACDCD61DD8B0B800593422 /* OpenGLES.framework */; };
 		04D60F8C1DD7CC5900779AE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D60F8B1DD7CC5900779AE0 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 		0468B6D81DD7D24100340345 /* Var.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Var.swift; sourceTree = "<group>"; };
 		0468B6DA1DD7D32F00340345 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0468B6DC1DD7D49100340345 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		048880991DD8D006001516C1 /* Restaurants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurants.swift; sourceTree = "<group>"; };
 		04ACDCD41DD8B08700593422 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		04ACDCD61DD8B0B800593422 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		04D60F881DD7CC5900779AE0 /* BTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +55,7 @@
 		04D60F7F1DD7CC5800779AE0 = {
 			isa = PBXGroup;
 			children = (
+				048880991DD8D006001516C1 /* Restaurants.swift */,
 				04D60F8A1DD7CC5900779AE0 /* BTag */,
 				04D60F891DD7CC5900779AE0 /* Products */,
 				4F82327F07C0CE0E5C69A081 /* Pods */,
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0488809A1DD8D006001516C1 /* Restaurants.swift in Sources */,
 				0468B6DD1DD7D49100340345 /* Player.swift in Sources */,
 				04D60F8C1DD7CC5900779AE0 /* AppDelegate.swift in Sources */,
 				0468B6DB1DD7D32F00340345 /* MapViewController.swift in Sources */,
@@ -364,6 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8E8ZZ4K42D;
 				INFOPLIST_FILE = BTag/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jack.ODonnell.BTag;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,6 +384,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8E8ZZ4K42D;
 				INFOPLIST_FILE = BTag/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jack.ODonnell.BTag;
 				PRODUCT_NAME = "$(TARGET_NAME)";
