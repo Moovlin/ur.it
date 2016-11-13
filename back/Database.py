@@ -175,12 +175,13 @@ creates and returns a json file with an array of restaurants
 def restaurants():
 	lat = request.args.get('lat')
 	lng = request.args.get('lng')
-	if lat != None and lng != None:
+	if (lat != None and lng != None):
 		lat = float(str(lat))
 		lng = float(str(lng))
+		manager = PoolManager()
 		locurl = "http://api.tripadvisor.com/api/partner/2.0/map/"+str(lat)+","+str(lng)+"/restaurants?key=caef92fb-2d4c-4341-bdff-c102b7a7f0da"
 		print(locurl)
-		content = urllib3.urlopen(locurl).read()
+		content = manager.urlopen(locurl).read()
 		newStr = json.loads(content)["data"]
 		print(len(newStr))
 		retStr = "{\"places\":["
