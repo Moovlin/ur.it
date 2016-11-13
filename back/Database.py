@@ -1,9 +1,14 @@
 """
-author: Hank Sheehan
+author: Richard Joerger & Hank Sheehan
+"""
+
+"""
+IMportin' stuff
 """
 from flask import Flask
 from flask import request, jsonify
 import json
+
 
 
 global playerList
@@ -35,8 +40,8 @@ class Player:
 		
 	
 	
-def dataToJSON(lat,lon,name,it,broken):
-	return "{ \n\"latitude\": "+str(lat)+",\n\"longitude\": "+str(lon)+",\n\"name\": \""+name+"\",\n\"broken\": "+str(broken).lower()+",\n\"it\": "+str(it).lower()+"}"
+def dataToJSON(lat,lng,name,it):
+	return name+";"+str(lat)+";"+str(lng)+";"+str(it).lower()
 
 app = Flask(__name__)
 
@@ -86,12 +91,12 @@ def addLocation(name, lat, lng):
 #allUsers
 @app.route("/allUsers")
 def allUsers():
-	output = '{\"users\": ['
+	playerString = ''
 	for key, value in locDict.items():
-		output += dataToJSON(lat=value.loc.lat, lon=value.loc.lng, name=value.name, it=value.it, broken=value.broken) + ','
-	output = output[:len(output)-1]
-	output +='\n]}'
-	return jsonify(stringout=output)
+		playerString += dataToJSON(lat=value.loc.lat, lng=value.loc.lng, name=value.name, it=value.it) + ','
+	playerString = playerString[:len(playerString)-1]
+	
+	return playerString
 
 #name=<>&lat=<>&lng=<>
 @app.route("/update")
