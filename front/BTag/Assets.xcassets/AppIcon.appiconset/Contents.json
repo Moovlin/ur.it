@@ -23,25 +23,25 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "urit80.png",
+      "filename" : "ur.it-80.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "urit120-1.png",
+      "filename" : "ur.it-121.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "urit120.png",
+      "filename" : "ur.it-120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "urit180.png",
+      "filename" : "ur.it-180.png",
       "scale" : "3x"
     }
   ],
