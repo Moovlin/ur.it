@@ -27,7 +27,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
 
     func checkIt() {
-        
         let index = people.index(where: {$0.name == vars.name})
         
         if people[index!].isIt == true {

@@ -14,6 +14,13 @@ class Player {
     var long: Double!
     var isIt: Bool!
 
+    var coords : (Double, Double) {
+        get {
+            return (self.lat, self.long)
+        }
+    }
+    
+    
     init (name: String, lat: Double, long: Double, isIt: Bool) {
         self.name = name
         self.lat = lat
