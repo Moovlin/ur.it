@@ -23,18 +23,28 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
 
     var locationManager = CLLocationManager()
-    var people : [Player] = []
+    var people : [Player] {
+        get {
+            return self.people
+        }
+        set {
+            if self.people.isEmpty {
+                self.people = newValue
+            }
+            else {
+                for i in 0..<self.people.count {
+                    for person in newValue {
+                        self.people[i].set(person)
+                    }
+                }
+            }
+        }
+    }
     
 
     func checkIt() {
         let index = people.index(where: {$0.name == vars.name})
-        
-        if people[index!].isIt == true {
-            tagButton.isHidden = false
-        }
-        else {
-            tagButton.isHidden = true
-        }
+        tagButton.isHidden = !people[index!].isIt
     }
     
     func update() {
@@ -144,10 +154,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         var smallestDistance : CLLocationDistance = 1000000
         for person in people {
             if person.name != vars.name {
-                let coord = CLLocation(latitude: person.lat, longitude: person.long)
-                
-                if ownCoord.distance(from: coord) <= 20 && smallestDistance > ownCoord.distance(from: coord) {
-                    smallestDistance = ownCoord.distance(from: coord)
+                if ownCoord.distance(from: person.coord) <= 20 && smallestDistance > ownCoord.distance(from: person.coord) {
+                    smallestDistance = ownCoord.distance(from: person.coord)
                     toTag = person.name
                 }
             }

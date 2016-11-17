@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class Player {
     var name: String!
@@ -14,18 +15,34 @@ class Player {
     var long: Double!
     var isIt: Bool!
 
-    var coords : (Double, Double) {
+    var coord : CLLocation {
         get {
-            return (self.lat, self.long)
+            return CLLocation(latitude: self.lat, longitude: self.long)
         }
     }
     
-    
+    var timeIt : Double {
+        get {
+            return 5
+        }
+    }
+
     init (name: String, lat: Double, long: Double, isIt: Bool) {
         self.name = name
         self.lat = lat
         self.long = long
         self.isIt = isIt
     }
+    
+    func set(_ player: Player) {
+        if self.name == player.name {
+            self.lat = player.lat
+            self.long = player.long
+            if self.isIt != player.isIt {
+                self.isIt = !self.isIt
+            }
+        }
+    }
+    
 }
 
