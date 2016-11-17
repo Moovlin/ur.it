@@ -1,15 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16C41b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yqw-uf-kxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16C41b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z54-fl-d7n">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Join Game-->
+        <scene sceneID="PI2-rZ-rTe">
+            <objects>
+                <viewController title="Join Game" id="wLW-w1-hhX" customClass="JoinViewController" customModule="BTag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gLZ-bb-Mgb"/>
+                        <viewControllerLayoutGuide type="bottom" id="mD5-z2-UIv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ED3-5D-Dzz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lobby Code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-HO-UIR">
+                                <rect key="frame" x="36" y="151" width="302" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3i-vi-K0T">
+                                <rect key="frame" x="148" y="224" width="79" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Join"/>
+                                <connections>
+                                    <action selector="joinButtonPressed:" destination="wLW-w1-hhX" eventType="touchUpInside" id="f9n-f6-sO8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Join Game" id="7lP-EF-mLA"/>
+                    <connections>
+                        <outlet property="lobby" destination="2gw-HO-UIR" id="L4I-27-1eZ"/>
+                        <segue destination="fMZ-Wj-wiq" kind="show" id="Uxi-Rn-qqb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sg1-gj-szw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-354" y="-1060"/>
+        </scene>
+        <!--Start-->
+        <scene sceneID="zQ7-Lw-scZ">
+            <objects>
+                <viewController id="8wA-Rt-XJ2" customClass="StartViewController" customModule="BTag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a33-qg-nxW"/>
+                        <viewControllerLayoutGuide type="bottom" id="MHi-sY-ttD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DxV-Go-YIV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETq-fZ-kRq">
+                                <rect key="frame" x="109" y="213" width="157" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <segue destination="xWR-R4-8YB" kind="show" id="coX-I8-RjX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubj-Sh-lgC">
+                                <rect key="frame" x="118" y="431" width="157" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Join"/>
+                                <connections>
+                                    <segue destination="wLW-w1-hhX" kind="show" id="APD-cN-zhr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Start" id="Mjm-0d-WoE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sez-1e-dEu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1503.2" y="-1060.1199400299852"/>
+        </scene>
+        <!--Add Game-->
+        <scene sceneID="82D-4X-FKp">
+            <objects>
+                <viewController title="Add Game" id="xWR-R4-8YB" customClass="AddViewController" customModule="BTag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w0V-Bu-zZR"/>
+                        <viewControllerLayoutGuide type="bottom" id="9MX-8s-xVb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N7P-lb-vG3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="fMZ-Wj-wiq" kind="show" id="Vge-de-VMi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Llr-bA-RzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1503" y="-192"/>
+        </scene>
+        <!--Lobby-->
+        <scene sceneID="sUq-aN-plN">
+            <objects>
+                <viewController title="Lobby" id="fMZ-Wj-wiq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="URx-oj-OOO"/>
+                        <viewControllerLayoutGuide type="bottom" id="EHV-cy-HOI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h05-gd-qdH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="yqw-uf-kxB" kind="presentation" id="nsP-CD-fdd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ney-Qp-ZSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-354" y="-191"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="cu9-Vv-LXv">
             <objects>
@@ -63,7 +183,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPE-qw-5h8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426.39999999999998" y="-270.31484257871068"/>
+            <point key="canvasLocation" x="591" y="-191"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T9H-fH-4E1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z54-fl-d7n" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Th-ha-hYg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8wA-Rt-XJ2" kind="relationship" relationship="rootViewController" id="jIw-Bh-Kl2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I3l-Et-xCM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2393" y="-1060"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Uxi-Rn-qqb"/>
+    </inferredMetricsTieBreakers>
 </document>

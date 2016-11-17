@@ -18,6 +18,20 @@ import GooglePlaces
 let dbRef = "http://129.161.145.134:5000/"
 struct vars {
     static var name = "tester"
+    static var lobby = ""
+}
+
+func joinLobby(_ id: String, _ completion: (Bool) -> ()) {
+    let url = dbRef + "joinLobby/\(id)"
+    do {
+        let result = try String(contentsOf: url.toURL)
+        if let boolRes = Bool(result) {
+            completion(boolRes)
+        }
+    }
+    catch {
+        print(error)
+    }
 }
 
 func tag(who tagged: String, _ done: @escaping ([Player]) -> ()) {
@@ -70,8 +84,6 @@ func getPeople(_ give: @escaping ([Player]) -> ()) {
                 long: long!,
                 isIt: isIt
             ))
-            
-            
         }
         give(result)
     }
