@@ -47,7 +47,7 @@ func tag(who tagged: String, _ done: @escaping ([Player]) -> ()) {
     }
 }
 
-func updateLocaiton(_ location: CLLocationCoordinate2D, _ done: @escaping ([Player]) -> ()) {
+func updateLocation(_ location: CLLocationCoordinate2D, _ done: @escaping ([Player]) -> ()) {
     let lat = location.latitude
     let long = location.longitude
     

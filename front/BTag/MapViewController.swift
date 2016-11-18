@@ -34,7 +34,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             else {
                 for i in 0..<self.people.count {
                     for person in newValue {
-                        self.people[i].set(person)
+                        self.people[i].value = person
                     }
                 }
             }
@@ -44,11 +44,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
 
     func checkIt() {
         let index = people.index(where: {$0.name == vars.name})
-        tagButton.isHidden = !people[index!].isIt
+        if tagButton.isHidden == people[index!].isIt {
+            tagButton.isHidden = !people[index!].isIt
+        }
     }
     
     func update() {
-        updateLocaiton((map.myLocation?.coordinate)!) { result in
+        updateLocation((map.myLocation?.coordinate)!) { result in
             self.people = result
             self.checkIt()
             self.setupMarkers(for: result)
@@ -135,7 +137,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        updateLocaiton(locations[0].coordinate) { result in
+        updateLocation(locations[0].coordinate) { result in
             self.people = result
             self.checkIt()
             self.setupMarkers(for: result)
