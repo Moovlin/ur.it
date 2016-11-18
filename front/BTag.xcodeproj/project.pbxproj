@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		042360361DDD0BD6000D801B /* ur.it-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 042360351DDD0BD6000D801B /* ur.it-1024.png */; };
 		042632AC1DDE7F9D002D35D6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042632AB1DDE7F9D002D35D6 /* Game.swift */; };
+		045583781DDF7BFA00C9133F /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045583771DDF7BFA00C9133F /* LobbyViewController.swift */; };
+		0455837B1DDF7DBA00C9133F /* LobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045583791DDF7DBA00C9133F /* LobbyTableViewCell.swift */; };
+		0455837C1DDF7DBA00C9133F /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0455837A1DDF7DBA00C9133F /* LobbyTableViewCell.xib */; };
 		0468B6D91DD7D24100340345 /* Var.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6D81DD7D24100340345 /* Var.swift */; };
 		0468B6DB1DD7D32F00340345 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6DA1DD7D32F00340345 /* MapViewController.swift */; };
 		0468B6DD1DD7D49100340345 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6DC1DD7D49100340345 /* Player.swift */; };
@@ -27,6 +30,9 @@
 /* Begin PBXFileReference section */
 		042360351DDD0BD6000D801B /* ur.it-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ur.it-1024.png"; sourceTree = "<group>"; };
 		042632AB1DDE7F9D002D35D6 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		045583771DDF7BFA00C9133F /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		045583791DDF7DBA00C9133F /* LobbyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyTableViewCell.swift; sourceTree = "<group>"; };
+		0455837A1DDF7DBA00C9133F /* LobbyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LobbyTableViewCell.xib; sourceTree = "<group>"; };
 		0468B6D81DD7D24100340345 /* Var.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Var.swift; sourceTree = "<group>"; };
 		0468B6DA1DD7D32F00340345 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0468B6DC1DD7D49100340345 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 		042360381DDD0D57000D801B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				045583771DDF7BFA00C9133F /* LobbyViewController.swift */,
 				0468B6DA1DD7D32F00340345 /* MapViewController.swift */,
 				047A25461DDBE28F00256024 /* StartViewController.swift */,
 				047A25481DDBE2D100256024 /* JoinViewController.swift */,
@@ -86,6 +93,15 @@
 				0468B6DC1DD7D49100340345 /* Player.swift */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		0455837D1DDF7DCA00C9133F /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				045583791DDF7DBA00C9133F /* LobbyTableViewCell.swift */,
+				0455837A1DDF7DBA00C9133F /* LobbyTableViewCell.xib */,
+			);
+			name = "Table View Cells";
 			sourceTree = "<group>";
 		};
 		04D60F7F1DD7CC5800779AE0 = {
@@ -109,6 +125,7 @@
 		04D60F8A1DD7CC5900779AE0 /* BTag */ = {
 			isa = PBXGroup;
 			children = (
+				0455837D1DDF7DCA00C9133F /* Table View Cells */,
 				042360381DDD0D57000D801B /* View Controllers */,
 				042360391DDD0D71000D801B /* Classes */,
 				04D60F8B1DD7CC5900779AE0 /* AppDelegate.swift */,
@@ -213,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D60F961DD7CC5900779AE0 /* LaunchScreen.storyboard in Resources */,
+				0455837C1DDF7DBA00C9133F /* LobbyTableViewCell.xib in Resources */,
 				04D60F931DD7CC5900779AE0 /* Assets.xcassets in Resources */,
 				04D60F911DD7CC5900779AE0 /* Main.storyboard in Resources */,
 				042360361DDD0BD6000D801B /* ur.it-1024.png in Resources */,
@@ -280,6 +298,8 @@
 				0468B6DB1DD7D32F00340345 /* MapViewController.swift in Sources */,
 				0468B6D91DD7D24100340345 /* Var.swift in Sources */,
 				047A25471DDBE28F00256024 /* StartViewController.swift in Sources */,
+				0455837B1DDF7DBA00C9133F /* LobbyTableViewCell.swift in Sources */,
+				045583781DDF7BFA00C9133F /* LobbyViewController.swift in Sources */,
 				047A25491DDBE2D100256024 /* JoinViewController.swift in Sources */,
 				042632AC1DDE7F9D002D35D6 /* Game.swift in Sources */,
 			);

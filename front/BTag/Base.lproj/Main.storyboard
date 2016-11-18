@@ -99,6 +99,16 @@
                     <view key="view" contentMode="scaleToFill" id="N7P-lb-vG3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fc4-Eg-5WC">
+                                <rect key="frame" x="169" y="189" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Make"/>
+                                <connections>
+                                    <segue destination="fMZ-Wj-wiq" kind="show" id="swE-7J-6H5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
@@ -112,7 +122,7 @@
         <!--Lobby-->
         <scene sceneID="sUq-aN-plN">
             <objects>
-                <viewController title="Lobby" id="fMZ-Wj-wiq" sceneMemberID="viewController">
+                <viewController title="Lobby" id="fMZ-Wj-wiq" customClass="LobbyViewController" customModule="BTag" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="URx-oj-OOO"/>
                         <viewControllerLayoutGuide type="bottom" id="EHV-cy-HOI"/>
@@ -120,9 +130,26 @@
                     <view key="view" contentMode="scaleToFill" id="h05-gd-qdH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nas-7r-DPB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fMZ-Wj-wiq" id="DMN-mq-3fb"/>
+                                    <outlet property="delegate" destination="fMZ-Wj-wiq" id="vNd-4m-0e8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Nas-7r-DPB" secondAttribute="trailing" id="H0d-JQ-vgN"/>
+                            <constraint firstItem="Nas-7r-DPB" firstAttribute="top" secondItem="URx-oj-OOO" secondAttribute="bottom" id="QSD-Od-4aG"/>
+                            <constraint firstItem="EHV-cy-HOI" firstAttribute="top" secondItem="Nas-7r-DPB" secondAttribute="bottom" id="VMI-gl-TKz"/>
+                            <constraint firstItem="Nas-7r-DPB" firstAttribute="leading" secondItem="h05-gd-qdH" secondAttribute="leading" id="cR4-bK-tUz"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="Nas-7r-DPB" id="LCN-uy-pqT"/>
                         <segue destination="yqw-uf-kxB" kind="presentation" id="nsP-CD-fdd"/>
                     </connections>
                 </viewController>
@@ -190,7 +217,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z54-fl-d7n" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Th-ha-hYg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Th-ha-hYg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -205,6 +232,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Uxi-Rn-qqb"/>
+        <segue reference="Vge-de-VMi"/>
     </inferredMetricsTieBreakers>
 </document>
