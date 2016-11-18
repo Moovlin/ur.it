@@ -14,7 +14,23 @@ class Player {
     var lat: Double!
     var long: Double!
     var isIt: Bool!
-
+    
+    var value : Player {
+        get {
+            return self
+        }
+        set {
+            let player = newValue
+            if self.name == player.name {
+                self.lat = player.lat
+                self.long = player.long
+                if self.isIt != player.isIt {
+                    self.isIt = !self.isIt
+                }
+            }
+        }
+    }
+    
     var coord : CLLocation {
         get {
             return CLLocation(latitude: self.lat, longitude: self.long)
@@ -33,16 +49,6 @@ class Player {
         self.long = long
         self.isIt = isIt
     }
-    
-    func set(_ player: Player) {
-        if self.name == player.name {
-            self.lat = player.lat
-            self.long = player.long
-            if self.isIt != player.isIt {
-                self.isIt = !self.isIt
-            }
-        }
-    }
-    
+
 }
 
