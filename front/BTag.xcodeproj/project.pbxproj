@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		042360361DDD0BD6000D801B /* ur.it-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 042360351DDD0BD6000D801B /* ur.it-1024.png */; };
+		042632AC1DDE7F9D002D35D6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042632AB1DDE7F9D002D35D6 /* Game.swift */; };
 		0468B6D91DD7D24100340345 /* Var.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6D81DD7D24100340345 /* Var.swift */; };
 		0468B6DB1DD7D32F00340345 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6DA1DD7D32F00340345 /* MapViewController.swift */; };
 		0468B6DD1DD7D49100340345 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B6DC1DD7D49100340345 /* Player.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		042360351DDD0BD6000D801B /* ur.it-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ur.it-1024.png"; sourceTree = "<group>"; };
+		042632AB1DDE7F9D002D35D6 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0468B6D81DD7D24100340345 /* Var.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Var.swift; sourceTree = "<group>"; };
 		0468B6DA1DD7D32F00340345 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0468B6DC1DD7D49100340345 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		042360391DDD0D71000D801B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				042632AB1DDE7F9D002D35D6 /* Game.swift */,
 				0468B6DC1DD7D49100340345 /* Player.swift */,
 			);
 			name = Classes;
@@ -278,6 +281,7 @@
 				0468B6D91DD7D24100340345 /* Var.swift in Sources */,
 				047A25471DDBE28F00256024 /* StartViewController.swift in Sources */,
 				047A25491DDBE2D100256024 /* JoinViewController.swift in Sources */,
+				042632AC1DDE7F9D002D35D6 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
