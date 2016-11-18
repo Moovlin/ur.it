@@ -36,18 +36,19 @@ class Player {
             return CLLocation(latitude: self.lat, longitude: self.long)
         }
     }
-    
-    var timeIt : Double {
-        get {
-            return 5
-        }
-    }
 
     init (name: String, lat: Double, long: Double, isIt: Bool) {
         self.name = name
         self.lat = lat
         self.long = long
         self.isIt = isIt
+    }
+    
+    init() {
+        self.name = "empty"
+        self.lat = 0.0
+        self.long = 0.0
+        self.isIt = false
     }
 
 }
