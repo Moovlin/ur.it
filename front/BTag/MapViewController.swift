@@ -23,24 +23,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
 
     var locationManager = CLLocationManager()
-    var people : [Player] {
-        get {
-            return self.people
-        }
-        set {
-            if self.people.isEmpty {
-                self.people = newValue
-            }
-            else {
-                for i in 0..<self.people.count {
-                    for person in newValue {
-                        self.people[i].value = person
-                    }
-                }
-            }
-        }
-    }
+
+    var people : [Player] = []
     
+    var markers : [GMSMarker] = []
 
     func checkIt() {
         let index = people.index(where: {$0.name == vars.name})
@@ -50,7 +36,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func update() {
-        updateLocation((map.myLocation?.coordinate)!) { result in
+        updateLocation(map.myLocation!.coordinate) { result in
             self.people = result
             self.checkIt()
             self.setupMarkers(for: result)
@@ -63,23 +49,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         initMap()
         InitButton()
         
-        
         getPeople { (result) in
             print(result)
             self.people = result
             self.checkIt()
             self.setupMarkers(for: result)
             
-            var updateTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+            _ = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
             
         }
-        
-        
-//        getPeople { result in
-//            self.setupMarkers(for: result)
-//        }
-        
-
     }
     
     func initMap() {
@@ -103,31 +81,45 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        //map.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
     }
     
     func InitButton() {
+        tagButton.backgroundColor = UIColor(colorLiteralRed: 0, green: 0.5, blue: 1, alpha: 1)
         tagButton.layer.cornerRadius = tagButton.bounds.height / 2.25
     }
     
     func setupMarkers(for players : [Player]) {
-        map.clear()
-        for player in players {
-            let position = CLLocationCoordinate2DMake(player.lat, player.long)
-            let marker = GMSMarker(position: position)
-            marker.title = player.name
-            
-            let iv = UIView()
-            iv.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-            iv.layer.cornerRadius = iv.bounds.height / 2
-            iv.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 1, alpha: 0.75)
-            if player.isIt == true {
-                iv.backgroundColor = UIColor.red
+        if markers.isEmpty {
+            for player in players {
+                let marker = GMSMarker()
+                marker.snippet = player.id
+                marker.position = player.coord2D
+                marker.title = player.name
+                marker.iconView = view(for: player)
+                marker.map = map
+                markers.append(marker)
             }
-            
-            marker.iconView = iv
-            marker.map = map
         }
+        else {
+            for i in 0..<markers.count {
+                for player in players {
+                    if player.id == markers[i].snippet {
+                        markers[i].position = player.coord2D
+                    }
+                }
+            }
+        }
+    }
+    
+    func view(for player: Player) -> UIView {
+        let iv = UIView()
+        iv.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        iv.layer.cornerRadius = iv.bounds.height / 2
+        iv.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 1, alpha: 0.75)
+        if player.isIt == true {
+            iv.backgroundColor = UIColor.red
+        }
+        return iv
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -141,8 +133,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             self.people = result
             self.checkIt()
             self.setupMarkers(for: result)
-            print(self.map.myLocation)
-            
+            print(self.map.myLocation!)
         }
     }
     
@@ -170,12 +161,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             }
         }
     }
-    
-    ///PRAGMA: Restaurant button
-    /*@IBAction func openRestaurants(_ sender:Any){
-        var popup:RestaurantView = RestaurantView()
-        self.present(popup, animated: true, completion: nil)
-    }*/
 }
 
 

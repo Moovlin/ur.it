@@ -15,9 +15,10 @@ import GoogleMaps
 import GoogleMapsCore
 import GooglePlaces
 
-let dbRef = "http://129.161.145.134:5000/"
+
+let dbRef = "https://dutogjmukh.localtunnel.me/"
 struct vars {
-    static var name = "tester"
+    static var name = "jack"
     static var lobby = ""
 }
 
@@ -64,6 +65,7 @@ func updateLocation(_ location: CLLocationCoordinate2D, _ done: @escaping ([Play
 }
 
 func getPeople(_ give: @escaping ([Player]) -> ()) {
+    
     let url = dbRef + "allUsers"
     
     do {
@@ -90,8 +92,6 @@ func getPeople(_ give: @escaping ([Player]) -> ()) {
     catch {
         print(error)
     }
-    
-    
 //    Alamofire.request(url.toURL).responseArray { (response: DataResponse<[Player]>) in
 //        print(response.result.value)
 //    }

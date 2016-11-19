@@ -14,17 +14,12 @@ class LobbyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTableView()
         initPlayers()
         tableView.register(UINib(nibName: "LobbyTableViewCell", bundle: nil) , forCellReuseIdentifier: "LobbyCell")
         // Do any additional setup after loading the view.
     }
     
     var players : [Player] = []
-    
-    func initTableView() {
-        tableView.allowsSelection = false
-    }
     
     func initPlayers() {
         players.append(Player())
@@ -35,7 +30,7 @@ class LobbyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
+        self.performSegue(withIdentifier: "toMap", sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
